@@ -21,6 +21,8 @@ import {
     StyledNewTab,
 } from './styled';
 
+import Time from '../Time';
+
 import {
     chromeStorage,
 } from '../../../../services/utilities';
@@ -52,7 +54,7 @@ const NewTab: React.FC<NewTabProperties> = () => {
                 kind: 'react',
                 element: () => (
                     <div>
-                        new tab
+                        <Time />
                     </div>
                 ),
             },
