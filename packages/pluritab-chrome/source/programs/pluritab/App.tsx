@@ -3,7 +3,7 @@ import themes from '@plurid/plurid-themes';
 
 import Context from './context';
 
-import NewTab from './NewTab';
+import Pluritab from './Pluritab';
 
 import {
     chromeStorage,
@@ -36,7 +36,7 @@ class App extends React.Component<any, any> {
     public render() {
         return (
             <Context.Provider value={this.state}>
-                <NewTab />
+                <Pluritab />
             </Context.Provider>
         );
     }
