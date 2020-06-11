@@ -12,9 +12,9 @@ const { NODE_ENV = DEVELOPMENT } = process.env;
 const base = {
     // context: __dirname,
     entry: {
-        // background: './source/programs/background/index.ts',
+        background: './source/programs/background/index.ts',
         // contentscript: './source/programs/contentscript/index.tsx',
-        newtab: './source/programs/newtab/index.tsx',
+        pluritab: './source/programs/pluritab/index.tsx',
         popup: './source/programs/popup/index.tsx',
         options: './source/programs/options/index.tsx',
     },
@@ -47,9 +47,9 @@ const base = {
             ],
         }),
         new HtmlWebpackPlugin({
-            template: './source/programs/newtab/index.html',
-            chunks: ['newtab'],
-            filename: 'newtab.html',
+            template: './source/programs/pluritab/index.html',
+            chunks: ['pluritab'],
+            filename: 'pluritab.html',
         }),
         new HtmlWebpackPlugin({
             template: './source/programs/popup/index.html',

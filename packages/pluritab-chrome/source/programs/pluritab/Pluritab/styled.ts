@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 
 
-export const StyledNewTab: any = styled.div`
+export const StyledPluritab: any = styled.div`
     background-color: ${(props: any) => {
         return props.theme.backgroundColorPrimary;
     }};

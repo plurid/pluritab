@@ -19,7 +19,7 @@ import {
 import Context from '../context';
 
 import {
-    StyledNewTab,
+    StyledPluritab,
 } from './styled';
 
 import Time from '../tools/Time';
@@ -38,10 +38,10 @@ import {
 
 
 
-interface NewTabProperties {
+interface PluritabProperties {
 }
 
-const NewTab: React.FC<NewTabProperties> = () => {
+const Pluritab: React.FC<PluritabProperties> = () => {
     // const context: any = useContext(Context);
     // const {
     //     theme,
@@ -88,7 +88,7 @@ const NewTab: React.FC<NewTabProperties> = () => {
     };
 
     return (
-        <StyledNewTab
+        <StyledPluritab
             // theme={theme}
         >
             <PluridApplication
@@ -98,9 +98,9 @@ const NewTab: React.FC<NewTabProperties> = () => {
                 ]}
                 configuration={configuration}
             />
-        </StyledNewTab>
+        </StyledPluritab>
     );
 }
 
 
-export default NewTab;
+export default Pluritab;

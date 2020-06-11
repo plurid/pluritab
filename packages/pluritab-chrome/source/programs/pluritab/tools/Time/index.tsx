@@ -80,7 +80,7 @@ const Time: React.FC<TimeProperties> = () => {
                     {renderHour()}:{currentTime.getMinutes()}
                 </div>
 
-                {/* {mouseOver && ( */}
+                {mouseOver && (
                     <StyledTimeOptions>
                         <div>
                             {show24H && (
@@ -103,7 +103,7 @@ const Time: React.FC<TimeProperties> = () => {
                             world
                         </div>
                     </StyledTimeOptions>
-                {/* )} */}
+                )}
             </StyledTimeText>
         </StyledTime>
     );
