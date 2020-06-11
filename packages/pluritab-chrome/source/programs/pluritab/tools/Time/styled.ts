@@ -16,6 +16,13 @@ export const StyledTime: any = styled.div`
 
 export const StyledTimeText: any = styled.div`
     position: relative;
+    min-width: 180px;
+`;
+
+
+export const StyledTimeTextPMAM: any = styled.span`
+    font-size: 1.5rem;
+    padding: 0 0.5rem;
 `;
 
 
