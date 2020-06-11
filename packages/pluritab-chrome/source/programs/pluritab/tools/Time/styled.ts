@@ -6,9 +6,6 @@ export const StyledTime: any = styled.div`
     display: grid;
     place-content: center;
     font-size: 4rem;
-
-    font-family: Ubuntu, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
     min-height: 400px;
     text-align: center;
 `;
