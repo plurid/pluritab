@@ -3,5 +3,7 @@ import styled from 'styled-components';
 
 
 export const StyledCurrentIP: any = styled.div`
-    padding: 1rem;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
 `;
