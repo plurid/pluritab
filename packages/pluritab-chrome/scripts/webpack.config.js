@@ -13,9 +13,7 @@ const base = {
     // context: __dirname,
     entry: {
         background: './source/programs/background/index.ts',
-        // contentscript: './source/programs/contentscript/index.tsx',
         pluritab: './source/programs/pluritab/index.tsx',
-        popup: './source/programs/popup/index.tsx',
         options: './source/programs/options/index.tsx',
     },
     resolve: {
@@ -50,11 +48,6 @@ const base = {
             template: './source/programs/pluritab/index.html',
             chunks: ['pluritab'],
             filename: 'pluritab.html',
-        }),
-        new HtmlWebpackPlugin({
-            template: './source/programs/popup/index.html',
-            chunks: ['popup'],
-            filename: 'popup.html',
         }),
         new HtmlWebpackPlugin({
             template: './source/programs/options/index.html',
