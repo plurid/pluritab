@@ -9,31 +9,32 @@ import themes from '@plurid/plurid-themes';
 import {
     PluridApplication,
     PluridPlane,
+    PluridPartialConfiguration,
 } from '@plurid/plurid-react';
 
 import {
     graphql,
 } from '@plurid/plurid-functions';
 
-import Context from '../../context';
+import Context from '../context';
 
 import {
     StyledNewTab,
 } from './styled';
 
-import Time from '../Time';
+import Time from '../tools/Time';
 
 import {
     chromeStorage,
-} from '../../../../services/utilities';
+} from '../../../services/utilities';
 
-import client from '../../../../services/graphql/client';
+import client from '../../../services/graphql/client';
 import {
     CURRENT_OWNER,
-} from '../../../../services/graphql/query';
+} from '../../../services/graphql/query';
 import {
     LOGOUT,
-} from '../../../../services/graphql/mutate';
+} from '../../../services/graphql/mutate';
 
 
 
@@ -61,6 +62,31 @@ const NewTab: React.FC<NewTabProperties> = () => {
         },
     ];
 
+    const configuration: PluridPartialConfiguration = {
+        theme: 'plurid',
+        space: {
+            // opaque: false,
+            center: true,
+        },
+        elements: {
+            plane: {
+                controls: {
+                    show: false,
+                },
+                width: typeof window !== 'undefined'
+                    ? window.innerWidth < 800
+                        ? 1 : 0.5
+                        : undefined,
+            },
+            viewcube: {
+                show: typeof window !== 'undefined'
+                    ? window.innerWidth < 800
+                        ? false : true
+                        : undefined,
+            },
+        },
+    };
+
     return (
         <StyledNewTab
             // theme={theme}
@@ -70,6 +96,7 @@ const NewTab: React.FC<NewTabProperties> = () => {
                 view={[
                     '/',
                 ]}
+                configuration={configuration}
             />
         </StyledNewTab>
     );
