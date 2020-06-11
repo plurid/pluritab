@@ -22,7 +22,7 @@ import {
     StyledPluritab,
 } from './styled';
 
-import Time from '../tools/Time';
+import ToolsPlane from '../ToolsPlane';
 
 import {
     chromeStorage,
@@ -54,9 +54,7 @@ const Pluritab: React.FC<PluritabProperties> = () => {
             component: {
                 kind: 'react',
                 element: () => (
-                    <div>
-                        <Time />
-                    </div>
+                    <ToolsPlane />
                 ),
             },
         },
