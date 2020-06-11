@@ -3,7 +3,7 @@ import themes from '@plurid/plurid-themes';
 
 import Context from './context';
 
-import Options from './containers/NewTab';
+import NewTab from './NewTab';
 
 import {
     chromeStorage,
@@ -18,23 +18,17 @@ class App extends React.Component<any, any> {
         this.state = {
             theme: themes.depict,
             setTheme: this.setTheme,
-            options: {
-                getImageTextAtLoad: false,
-                transparentUI: true,
-            },
         };
     }
 
     async componentDidMount() {
         const { theme } = await chromeStorage.get('theme');
-        const { options } = await chromeStorage.get('options');
 
         const selectedTheme = (themes as any)[theme];
 
         if (theme) {
             this.setState({
                 theme: selectedTheme,
-                options,
             });
         }
     }
@@ -42,7 +36,7 @@ class App extends React.Component<any, any> {
     public render() {
         return (
             <Context.Provider value={this.state}>
-                <Options />
+                <NewTab />
             </Context.Provider>
         );
     }
