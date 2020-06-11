@@ -7,6 +7,8 @@ import {
 import Time from '../tools/Time';
 import CurrentIP from '../tools/CurrentIP';
 
+import SettingsButton from '../SettingsButton';
+
 
 
 interface ToolsPlaneProperties {
@@ -16,9 +18,13 @@ const ToolsPlane: React.FC<ToolsPlaneProperties> = () => {
 
     return (
         <StyledToolsPlane>
-            <Time />
+            <div>
+                <Time />
 
-            <CurrentIP />
+                <CurrentIP />
+            </div>
+
+            <SettingsButton />
         </StyledToolsPlane>
     );
 }
