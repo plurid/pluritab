@@ -6,7 +6,6 @@ export const StyledTime: any = styled.div`
     display: grid;
     place-content: center;
     font-size: 4rem;
-    min-height: 400px;
     text-align: center;
 `;
 
