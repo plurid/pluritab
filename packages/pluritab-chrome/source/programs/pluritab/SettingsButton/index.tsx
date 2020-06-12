@@ -25,15 +25,12 @@ const SettingsButton: React.FC<SettingsButtonProperties> = () => {
 
     return (
         <StyledSettingsButton>
-            <div
+            <PluridIconTools
+                atClick={() => setShowSettings(show => !show)}
                 style={{
                     zIndex: 999,
                 }}
-            >
-                <PluridIconTools
-                    atClick={() => setShowSettings(show => !show)}
-                />
-            </div>
+            />
 
             {showSettings && (
                 <Settings />

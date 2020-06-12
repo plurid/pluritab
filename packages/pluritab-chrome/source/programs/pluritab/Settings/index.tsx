@@ -1,7 +1,12 @@
 import React from 'react';
 
 import {
+    PluridSwitch,
+} from '@plurid/plurid-ui-react';
+
+import {
     StyledSettings,
+    StyledSettingsContainer,
 } from './styled';
 
 
@@ -12,39 +17,85 @@ interface SettingsProperties {
 const Settings: React.FC<SettingsProperties> = () => {
 
     return (
-        <StyledSettings>
-            <div>
-                <h1>
-                    tools
-                </h1>
-            </div>
-
-            <div>
+        <StyledSettingsContainer>
+            <StyledSettings>
                 <div>
-                    desearcher
+                    <h1>
+                        tools
+                    </h1>
                 </div>
 
                 <div>
-                    color picker
-                </div>
+                    <ul>
+                        <li>
+                            <div>
+                                desearcher
+                            </div>
 
-                <div>
-                    converter
-                </div>
+                            <PluridSwitch
+                                checked={false}
+                                atChange={() => {}}
+                            />
+                        </li>
 
-                <div>
-                    current ip
-                </div>
+                        <li>
+                            <div>
+                                color picker
+                            </div>
 
-                <div>
-                    notes
-                </div>
+                            <PluridSwitch
+                                checked={false}
+                                atChange={() => {}}
+                            />
+                        </li>
 
-                <div>
-                    time
+                        <li>
+                            <div>
+                                converter
+                            </div>
+
+                            <PluridSwitch
+                                checked={false}
+                                atChange={() => {}}
+                            />
+                        </li>
+
+                        <li>
+                            <div>
+                                current ip
+                            </div>
+
+                            <PluridSwitch
+                                checked={false}
+                                atChange={() => {}}
+                            />
+                        </li>
+
+                        <li>
+                            <div>
+                                notes
+                            </div>
+
+                            <PluridSwitch
+                                checked={false}
+                                atChange={() => {}}
+                            />
+                        </li>
+
+                        <li>
+                            <div>
+                                time
+                            </div>
+
+                            <PluridSwitch
+                                checked={false}
+                                atChange={() => {}}
+                            />
+                        </li>
+                    </ul>
                 </div>
-            </div>
-        </StyledSettings>
+            </StyledSettings>
+        </StyledSettingsContainer>
     );
 }
 
