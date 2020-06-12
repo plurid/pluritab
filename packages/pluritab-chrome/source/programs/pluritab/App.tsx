@@ -1,7 +1,9 @@
 import React from 'react';
 import themes from '@plurid/plurid-themes';
 
-import Context from './context';
+import Context, {
+    IContext,
+} from './context';
 
 import Pluritab from './Pluritab';
 
@@ -11,13 +13,22 @@ import {
 
 
 
-class App extends React.Component<any, any> {
+
+class App extends React.Component<any, IContext> {
     constructor(props: any) {
         super(props);
 
         this.state = {
             theme: themes.depict,
             setTheme: this.setTheme,
+            tools: {
+                colorPicker: false,
+                converter: false,
+                currentIP: false,
+                desearcher: true,
+                notes: false,
+                time: true,
+            },
         };
     }
 
@@ -35,13 +46,17 @@ class App extends React.Component<any, any> {
 
     public render() {
         return (
-            <Context.Provider value={this.state}>
+            <Context.Provider
+                value={this.state}
+            >
                 <Pluritab />
             </Context.Provider>
         );
     }
 
-    private setTheme = async (theme: string) => {
+    private setTheme = async (
+        theme: string,
+    ) => {
         this.setState({
             theme: (themes as any)[theme],
         });

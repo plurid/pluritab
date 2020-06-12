@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+    useContext,
+} from 'react';
 
 import {
     PluridSwitch,
@@ -9,13 +11,38 @@ import {
     StyledSettingsContainer,
 } from './styled';
 
+import Context from '../context';
+
 
 
 interface SettingsProperties {
 }
 
 const Settings: React.FC<SettingsProperties> = () => {
+    /** context */
+    const context = useContext(Context);
 
+    if (!context) {
+        return (
+            <></>
+        );
+    }
+
+    const {
+        tools,
+    } = context;
+
+    const {
+        colorPicker,
+        converter,
+        currentIP,
+        desearcher,
+        notes,
+        time,
+    } = tools;
+
+
+    /** render */
     return (
         <StyledSettingsContainer>
             <StyledSettings>
@@ -29,22 +56,11 @@ const Settings: React.FC<SettingsProperties> = () => {
                     <ul>
                         <li>
                             <div>
-                                desearcher
-                            </div>
-
-                            <PluridSwitch
-                                checked={false}
-                                atChange={() => {}}
-                            />
-                        </li>
-
-                        <li>
-                            <div>
                                 color picker
                             </div>
 
                             <PluridSwitch
-                                checked={false}
+                                checked={colorPicker}
                                 atChange={() => {}}
                             />
                         </li>
@@ -55,7 +71,7 @@ const Settings: React.FC<SettingsProperties> = () => {
                             </div>
 
                             <PluridSwitch
-                                checked={false}
+                                checked={converter}
                                 atChange={() => {}}
                             />
                         </li>
@@ -66,7 +82,18 @@ const Settings: React.FC<SettingsProperties> = () => {
                             </div>
 
                             <PluridSwitch
-                                checked={false}
+                                checked={currentIP}
+                                atChange={() => {}}
+                            />
+                        </li>
+
+                        <li>
+                            <div>
+                                desearcher
+                            </div>
+
+                            <PluridSwitch
+                                checked={desearcher}
                                 atChange={() => {}}
                             />
                         </li>
@@ -77,7 +104,7 @@ const Settings: React.FC<SettingsProperties> = () => {
                             </div>
 
                             <PluridSwitch
-                                checked={false}
+                                checked={notes}
                                 atChange={() => {}}
                             />
                         </li>
@@ -88,7 +115,7 @@ const Settings: React.FC<SettingsProperties> = () => {
                             </div>
 
                             <PluridSwitch
-                                checked={false}
+                                checked={time}
                                 atChange={() => {}}
                             />
                         </li>
