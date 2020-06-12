@@ -4,6 +4,11 @@ import React, {
 } from 'react';
 
 import {
+    PluridIconRotate,
+} from '@plurid/plurid-icons-react';
+
+import {
+    StyledCurrentIPContainer,
     StyledCurrentIP,
 } from './styled';
 
@@ -13,12 +18,15 @@ interface CurrentIPProperties {
 }
 
 const CurrentIP: React.FC<CurrentIPProperties> = () => {
-
     /** state */
     const [
         currentIP,
         setCurrentIP,
     ] = useState('');
+    const [
+        showReset,
+        setShowReset,
+    ] = useState(false);
 
 
     /** effects */
@@ -36,14 +44,27 @@ const CurrentIP: React.FC<CurrentIPProperties> = () => {
         getIP();
     }, []);
 
+
+    /** render */
     return (
-        <StyledCurrentIP>
+        <StyledCurrentIPContainer
+            onMouseEnter={() => setShowReset(true)}
+            onMouseLeave={() => setShowReset(false)}
+        >
             {currentIP && (
-                <>
-                    {currentIP}
-                </>
+                <StyledCurrentIP>
+                    <div>
+                        {currentIP}
+                    </div>
+
+                    {showReset && (
+                        <div>
+                            <PluridIconRotate />
+                        </div>
+                    )}
+                </StyledCurrentIP>
             )}
-        </StyledCurrentIP>
+        </StyledCurrentIPContainer>
     );
 }
 
