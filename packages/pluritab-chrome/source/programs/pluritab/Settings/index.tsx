@@ -52,7 +52,11 @@ const Settings: React.FC<SettingsProperties> = () => {
                     </h1>
                 </div>
 
-                <div>
+                <div
+                    style={{
+                        overflow: 'scroll',
+                    }}
+                >
                     <ul>
                         <li>
                             <div>
@@ -120,6 +124,10 @@ const Settings: React.FC<SettingsProperties> = () => {
                             />
                         </li>
                     </ul>
+                </div>
+
+                <div>
+
                 </div>
             </StyledSettings>
         </StyledSettingsContainer>
