@@ -5,6 +5,7 @@ import {
 } from './styled';
 
 import Time from '../tools/Time';
+import Desearcher from '../tools/Desearcher';
 import CurrentIP from '../tools/CurrentIP';
 
 import SettingsButton from '../SettingsButton';
@@ -20,6 +21,8 @@ const ToolsPlane: React.FC<ToolsPlaneProperties> = () => {
         <StyledToolsPlane>
             <div>
                 <Time />
+
+                <Desearcher />
 
                 <CurrentIP />
             </div>
