@@ -17,13 +17,20 @@ interface DesearcherProperties {
 }
 
 const Desearcher: React.FC<DesearcherProperties> = () => {
+    /** state */
+    const [
+        desearchValue,
+        setDesearchValue,
+    ] = useState('')
+
 
     return (
         <StyledDesearcher>
             <PluridTextline
-                text=""
-                atChange={() => {}}
+                text={desearchValue}
+                atChange={(event: any) => setDesearchValue(event.target.value)}
                 level={1}
+                placeholder="desearch"
             />
         </StyledDesearcher>
     );
