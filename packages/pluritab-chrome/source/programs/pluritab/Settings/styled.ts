@@ -3,11 +3,9 @@ import styled from 'styled-components';
 
 
 export const StyledSettingsContainer: any = styled.div`
-    max-height: 300px;
+    /* max-height: 300px; */
     width: 200px;
-    overflow: scroll;
-    padding-bottom: 1rem;
-
+    overflow: hidden;
     position: absolute;
     bottom: -1rem;
     right: -1rem;
@@ -19,12 +17,15 @@ export const StyledSettingsContainer: any = styled.div`
 export const StyledSettings: any = styled.div`
     overflow: scroll;
     margin: 1rem;
-    margin-bottom: 2rem;
     font-size: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 30px 200px 30px;
 
     h1 {
         font-size: 1.4rem;
-        margin-bottom: 1.5rem;
+        margin-top: 0;
+        margin-bottom: 10px;
     }
 
     ul {
