@@ -11,6 +11,7 @@ export const StyledCurrentIPContainer: any = styled.div`
 
 export const StyledCurrentIP: any = styled.div`
     font-size: 0.9rem;
+    min-height: 1.5rem;
     display: grid;
     align-items: center;
     justify-items: center;
