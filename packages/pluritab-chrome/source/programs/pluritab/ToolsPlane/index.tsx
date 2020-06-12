@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+    useContext,
+} from 'react';
 
 import {
     StyledToolsPlane,
@@ -10,21 +12,52 @@ import CurrentIP from '../tools/CurrentIP';
 
 import SettingsButton from '../SettingsButton';
 
+import Context from '../context';
+
 
 
 interface ToolsPlaneProperties {
 }
 
 const ToolsPlane: React.FC<ToolsPlaneProperties> = () => {
+    /** context */
+    const context = useContext(Context);
 
+    if (!context) {
+        return (
+            <></>
+        );
+    }
+
+    const {
+        tools,
+    } = context;
+
+    const {
+        colorPicker,
+        converter,
+        currentIP,
+        desearcher,
+        notes,
+        time,
+    } = tools;
+
+
+    /** render */
     return (
         <StyledToolsPlane>
             <div>
-                <Time />
+                {time && (
+                    <Time />
+                )}
 
-                <Desearcher />
+                {desearcher && (
+                    <Desearcher />
+                )}
 
-                <CurrentIP />
+                {currentIP && (
+                    <CurrentIP />
+                )}
             </div>
 
             <SettingsButton />
