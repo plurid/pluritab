@@ -50,7 +50,7 @@ const Pluritab: React.FC<PluritabProperties> = () => {
 
     const planes: PluridPlane[] = [
         {
-            path: '/',
+            route: '/',
             component: {
                 kind: 'react',
                 element: () => (
@@ -61,7 +61,9 @@ const Pluritab: React.FC<PluritabProperties> = () => {
     ];
 
     const configuration: PluridPartialConfiguration = {
-        theme: 'plurid',
+        global: {
+            theme: 'plurid',
+        },
         space: {
             // opaque: false,
             center: true,
