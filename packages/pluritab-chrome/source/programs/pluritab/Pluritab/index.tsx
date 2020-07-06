@@ -66,7 +66,7 @@ const Pluritab: React.FC<PluritabProperties> = () => {
         },
         space: {
             // opaque: false,
-            center: true,
+            // center: true,
         },
         elements: {
             plane: {
