@@ -1,5 +1,4 @@
 import React, {
-    // useContext,
     useState,
     useEffect,
 } from 'react';
@@ -126,9 +125,9 @@ const Time: React.FC<TimeProperties> = () => {
         setMouseOver,
     ] = useState(false);
     const [
-        show24H,
-        setShow24H,
-    ] = useState(true);
+        timeShape,
+        setTimeShape,
+    ] = useState('24H');
 
 
     /** effects */
@@ -144,8 +143,36 @@ const Time: React.FC<TimeProperties> = () => {
 
 
     /** render */
+    let timeShapeSelectRender = (<></>);
+    switch (timeShape) {
+        case '24H':
+            timeShapeSelectRender = (
+                <StyledTimSwitch
+                    onClick={() => setTimeShape('12H')}
+                >
+                    24H
+                </StyledTimSwitch>
+            );
+        case '12H':
+            timeShapeSelectRender = (
+                <StyledTimSwitch
+                    onClick={() => setTimeShape('UNX')}
+                >
+                    12H
+                </StyledTimSwitch>
+            );
+        case 'UNIX':
+            timeShapeSelectRender = (
+                <StyledTimSwitch
+                    onClick={() => setTimeShape('24H')}
+                >
+                    UNX
+                </StyledTimSwitch>
+            );
+    }
+
     const renderTime = () => {
-        if (show24H) {
+        if (timeShape === '24H') {
             return (
                 <>
                     {formatDate(currentTime, 'HH:mm')}
@@ -153,9 +180,18 @@ const Time: React.FC<TimeProperties> = () => {
             );
         }
 
+        if (timeShape === 'UNX') {
+            return (
+                <>
+                    {Math.floor(Date.now() / 1000)}
+                </>
+            );
+        }
+
         return (
             <>
                 {formatDate(currentTime, 'h:mm')}
+
                 <StyledTimeTextPMAM>
                     {formatDate(currentTime, 'TT')}
                 </StyledTimeTextPMAM>
@@ -180,20 +216,7 @@ const Time: React.FC<TimeProperties> = () => {
                 {mouseOver && (
                     <StyledTimeOptions>
                         <div>
-                            {show24H && (
-                                <StyledTimSwitch
-                                    onClick={() => setShow24H(false)}
-                                >
-                                    24H
-                                </StyledTimSwitch>
-                            )}
-                            {!show24H && (
-                                <StyledTimSwitch
-                                    onClick={() => setShow24H(true)}
-                                >
-                                    12H
-                                </StyledTimSwitch>
-                            )}
+                            {timeShapeSelectRender}
                         </div>
 
                         <div>
