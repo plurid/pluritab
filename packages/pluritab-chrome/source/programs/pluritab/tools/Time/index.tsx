@@ -217,7 +217,7 @@ const Time: React.FC<TimeProperties> = () => {
                 </StyledTimSwitch>
             );
             break;
-        case 'UNIX':
+        case 'UNX':
             timeSelectRender = (
                 <StyledTimSwitch
                     onClick={() => setTimeShape('24H')}
