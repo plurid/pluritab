@@ -105,6 +105,38 @@ function formatDate(
 };
 
 
+const renderTimeFunction = (
+    timeShape: string,
+    currentTime: Date,
+) => {
+    if (timeShape === '24H') {
+        return (
+            <>
+                {formatDate(currentTime, 'HH:mm')}
+            </>
+        );
+    }
+
+    if (timeShape === 'UNX') {
+        return (
+            <>
+                {Math.floor(currentTime.getTime() / 1000)}
+            </>
+        );
+    }
+
+    return (
+        <>
+            {formatDate(currentTime, 'h:mm')}
+
+            <StyledTimeTextPMAM>
+                {formatDate(currentTime, 'TT')}
+            </StyledTimeTextPMAM>
+        </>
+    );
+}
+
+
 interface TimeProperties {
 }
 
@@ -114,6 +146,7 @@ const Time: React.FC<TimeProperties> = () => {
     //     theme,
     //     setTheme,
     // } = context;
+
 
     /** state */
     const [
@@ -128,6 +161,15 @@ const Time: React.FC<TimeProperties> = () => {
         timeShape,
         setTimeShape,
     ] = useState('24H');
+    const [
+        renderTime,
+        setRenderTime,
+    ] = useState(
+        renderTimeFunction(
+            timeShape,
+            currentTime,
+        ),
+    );
 
 
     /** effects */
@@ -141,63 +183,51 @@ const Time: React.FC<TimeProperties> = () => {
         }
     }, []);
 
+    useEffect(() => {
+        setRenderTime(
+            renderTimeFunction(
+                timeShape,
+                currentTime,
+            ),
+        );
+    }, [
+        timeShape,
+        currentTime,
+    ]);
+
 
     /** render */
-    let timeShapeSelectRender = (<></>);
+    let timeSelectRender = (<></>);
     switch (timeShape) {
         case '24H':
-            timeShapeSelectRender = (
+            timeSelectRender = (
                 <StyledTimSwitch
                     onClick={() => setTimeShape('12H')}
                 >
                     24H
                 </StyledTimSwitch>
             );
+            break;
         case '12H':
-            timeShapeSelectRender = (
+            timeSelectRender = (
                 <StyledTimSwitch
                     onClick={() => setTimeShape('UNX')}
                 >
                     12H
                 </StyledTimSwitch>
             );
+            break;
         case 'UNIX':
-            timeShapeSelectRender = (
+            timeSelectRender = (
                 <StyledTimSwitch
                     onClick={() => setTimeShape('24H')}
                 >
                     UNX
                 </StyledTimSwitch>
             );
+            break;
     }
 
-    const renderTime = () => {
-        if (timeShape === '24H') {
-            return (
-                <>
-                    {formatDate(currentTime, 'HH:mm')}
-                </>
-            );
-        }
-
-        if (timeShape === 'UNX') {
-            return (
-                <>
-                    {Math.floor(Date.now() / 1000)}
-                </>
-            );
-        }
-
-        return (
-            <>
-                {formatDate(currentTime, 'h:mm')}
-
-                <StyledTimeTextPMAM>
-                    {formatDate(currentTime, 'TT')}
-                </StyledTimeTextPMAM>
-            </>
-        );
-    }
 
     return (
         <StyledTime
@@ -210,13 +240,13 @@ const Time: React.FC<TimeProperties> = () => {
                 onMouseLeave={() => setMouseOver(false)}
             >
                 <div>
-                    {renderTime()}
+                    {renderTime}
                 </div>
 
                 {mouseOver && (
                     <StyledTimeOptions>
                         <div>
-                            {timeShapeSelectRender}
+                            {timeSelectRender}
                         </div>
 
                         <div>
